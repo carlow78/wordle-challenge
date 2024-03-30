@@ -1,24 +1,49 @@
-from run import Wordle
-from colorama import Fore
 
-def main():
-    wordle = Wordle("APPLE")
+from letter import LetterState
+
+class Wordle:
+
+    MAX_GUESSES = 6
+    WORD_LENGTH = 5
+
+    def __init__(self, secret: str):
+        self.secret: str = secret.upper()
+        self.guesses = []
+        pass
+
+    def attempt(self, word: str):
+        word = word.upper() 
+        self.guesses.append(word)
+
+    def guess(self, word: str):
+        word = word.upper()
+        result = []
+
+        for x in range(self.WORD_LENGTH):
+            character = word[x]
+            letter = LetterState(character)
+            letter.is_in_word = character in self.secret
+            letter.is_in_spot = character == self.secret[x]
+            result.append(letter)
+            
+        return result
+
+    # Function when the word has been guessed correctly. Game over.
+
+    @property # Allows us to call the function without ()
+    def game_over(self):
+        return len(self.guesses) > 0 and self.guesses[-1] == self.secret
     
-    while wordle.guess_attempt:
-       i = input("Enter your guess:")
+    # Function for remaining attempts
+    @property
+    def remain_attempts(self) -> int:
+       return self.MAX_GUESSES - len(self.guesses)
 
-       if len(i) != wordle.WORD_LENGTH:
-           print(Fore.RED + f"Guess must be {wordle.WORD_LENGTH} characters long" + Fore.RESET)
-           continue
     
-       wordle.attempt(i)
-       result = wordle.guess(i)
-       print(*result, sep="\n")                 
+    # Function to allow player only 6 guesses (MAX_GUESSES)
+    
+    @property 
+    def guess_attempt(self):
+        return self.remain_attempts > 0 and not self.game_over
+    
 
-    if wordle.game_over:
-        print("You have guessed the word. Congrats")
-    else:
-        print("You have run out of guesses!")
-
-if __name__ == "__main__":
-    main()

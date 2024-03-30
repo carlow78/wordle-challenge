@@ -1,49 +1,45 @@
-
 from letter import LetterState
+from play import Wordle
+from colorama import Fore
 
-class Wordle:
-
-    MAX_GUESSES = 6
-    WORD_LENGTH = 5
-
-    def __init__(self, secret: str):
-        self.secret: str = secret.upper()
-        self.guesses = []
-        pass
-
-    def attempt(self, word: str):
-        word = word.upper() 
-        self.guesses.append(word)
-
-    def guess(self, word: str):
-        word = word.upper()
-        result = []
-
-        for x in range(self.WORD_LENGTH):
-            character = word[x]
-            letter = LetterState(character)
-            letter.is_in_word = character in self.secret
-            letter.is_in_spot = character == self.secret[x]
-            result.append(letter)
-            
-        return result
-
-    # Function when the word has been guessed correctly. Game over.
-
-    @property # Allows us to call the function without ()
-    def game_over(self):
-        return len(self.guesses) > 0 and self.guesses[-1] == self.secret
+def main():
     
-    # Function for remaining attempts
-    @property
-    def remain_attempts(self) -> int:
-       return self.MAX_GUESSES - len(self.guesses)
+    wordle = Wordle("APPLE")
+    
+    while wordle.guess_attempt:
+       i = input("Enter your guess:")
 
+       if len(i) != wordle.WORD_LENGTH:
+           print(Fore.RED + f"Guess must be {wordle.WORD_LENGTH} characters long." + Fore.RESET)
+           continue
     
-    # Function to allow player only 6 guesses (MAX_GUESSES)
-    
-    @property 
-    def guess_attempt(self):
-        return self.remain_attempts > 0 and not self.game_over
-    
+       wordle.attempt(i)
+       display(wordle)               
 
+    if wordle.game_over:
+        print("You have guessed the word. Congrats")
+    else:
+        print("You have run out of guesses!")
+
+def display(wordle: Wordle):
+    for word in wordle.guesses:
+        result = wordle.guess(word)
+        convert_result_str = convert_to_color(result)
+        print(convert_result_str)
+    pass
+
+def convert_to_color(result: list[LetterState]):
+    result_color = []
+    for letter in result:
+        if letter.is_in_spot:
+            color = Fore.GREEN
+        elif letter.is_in_word:
+            color = Fore.YELLOW
+        else:
+            color = Fore.BLUE
+        color_letter = color + letter.character + Fore.RESET
+        result_color.append(color_letter)
+    return "".join(result_color)
+
+if __name__ == "__main__":
+    main()
