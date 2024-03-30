@@ -23,13 +23,14 @@ def main():
 
 def display(wordle: Wordle):
     print("\nResult so far: \n")
+    print(f"{wordle.remain_attempts} attempts left.")
     for word in wordle.guesses:
         result = wordle.guess(word)
         convert_result_str = convert_to_color(result)
         print(convert_result_str)
     
     for _ in range(wordle.remain_attempts):
-        print("_" * wordle.WORD_LENGTH)
+        print("_ " * wordle.WORD_LENGTH)
 
 def convert_to_color(result: list[LetterState]):
     result_color = []
@@ -42,7 +43,7 @@ def convert_to_color(result: list[LetterState]):
             color = Fore.BLUE
         color_letter = color + letter.character + Fore.RESET
         result_color.append(color_letter)
-    return "".join(result_color)
+    return " ".join(result_color)
 
 if __name__ == "__main__":
     main()
