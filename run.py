@@ -1,4 +1,6 @@
 
+from letter import LetterState
+
 class Wordle:
 
     MAX_GUESSES = 6
@@ -12,6 +14,18 @@ class Wordle:
     def attempt(self, word: str):
         self.guesses.append(word)
 
+    def guess(self, word: str):
+        result = []
+
+        for x in range(self.WORD_LENGTH):
+            character = word[x]
+            letter = LetterState(character)
+            letter.is_in_word = character in self.secret
+            letter.is_in_spot = character == self.secret[x]
+            result.append(letter)
+            
+        return result
+
     # Function when the word has been guessed correctly. Game over.
 
     @property # Allows us to call the function without ()
@@ -24,7 +38,7 @@ class Wordle:
        return self.MAX_GUESSES - len(self.guesses)
 
     
-    # Function to allow player only 5 guesses
+    # Function to allow player only 6 guesses (MAX_GUESSES)
     
     @property 
     def guess_attempt(self):
