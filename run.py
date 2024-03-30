@@ -7,7 +7,7 @@ def main():
     wordle = Wordle("APPLE")
     
     while wordle.guess_attempt:
-       i = input("Enter your guess:")
+       i = input("\nEnter your guess:")
 
        if len(i) != wordle.WORD_LENGTH:
            print(Fore.RED + f"Guess must be {wordle.WORD_LENGTH} characters long." + Fore.RESET)
@@ -22,11 +22,14 @@ def main():
         print("You have run out of guesses!")
 
 def display(wordle: Wordle):
+    print("\nResult so far: \n")
     for word in wordle.guesses:
         result = wordle.guess(word)
         convert_result_str = convert_to_color(result)
         print(convert_result_str)
-    pass
+    
+    for _ in range(wordle.remain_attempts):
+        print("_" * wordle.WORD_LENGTH)
 
 def convert_to_color(result: list[LetterState]):
     result_color = []
