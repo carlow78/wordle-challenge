@@ -1,7 +1,7 @@
 from run import Wordle
 
 def main():
-    wordle = Wordle("TAXES")
+    wordle = Wordle("APPLE")
     
     while wordle.guess_attempt:
        i = input("Enter your guess:")
