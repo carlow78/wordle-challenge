@@ -1,4 +1,5 @@
 from run import Wordle
+from colorama import Fore
 
 def main():
     wordle = Wordle("APPLE")
@@ -7,7 +8,7 @@ def main():
        i = input("Enter your guess:")
 
        if len(i) != wordle.WORD_LENGTH:
-           print(f"Guess must be {wordle.WORD_LENGTH} characters long")
+           print(Fore.RED + f"Guess must be {wordle.WORD_LENGTH} characters long" + Fore.RESET)
            continue
     
        wordle.attempt(i)
@@ -18,7 +19,6 @@ def main():
         print("You have guessed the word. Congrats")
     else:
         print("You have run out of guesses!")
-
 
 if __name__ == "__main__":
     main()
