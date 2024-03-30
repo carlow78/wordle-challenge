@@ -7,7 +7,7 @@ def main():
        i = input("Enter your guess:")
        wordle.attempt(i)
        result = wordle.guess(i)
-       print(result)
+       print(*result)
 
     if wordle.game_over:
         print("You have guessed the word. Congrats")
