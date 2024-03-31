@@ -9,11 +9,10 @@ def main():
     word_list = load_word_list("assets/wordle_five.txt")
     secret = random.choice(list(word_list))
     wordle = Wordle(secret)
-
-
     
     while wordle.guess_attempt:
        i = input("\nEnter your guess:")
+       i = i.upper()
 
        if len(i) != wordle.WORD_LENGTH:
            print(Fore.RED + f"Guess must be {wordle.WORD_LENGTH} characters long." + Fore.RESET)
