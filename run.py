@@ -1,10 +1,16 @@
+from typing import List
 from letter import LetterState
 from play import Wordle
 from colorama import Fore
+import random
 
 def main():
-    
-    wordle = Wordle("APPLE")
+
+    word_list = load_word_list("assets/wordle_five.txt")
+    secret = random.choice(list(word_list))
+    wordle = Wordle(secret)
+
+
     
     while wordle.guess_attempt:
        i = input("\nEnter your guess:")
@@ -36,6 +42,14 @@ def display(wordle: Wordle):
         lines.append(" ".join(["_"] * wordle.WORD_LENGTH))
 
     game_border(lines)
+
+def load_word_list(path: str):
+    word_list = set()
+    with open(path, "r") as f:
+        for line in f.readlines():
+            word = line.strip().upper()
+            word_list.add(word)
+    return word_list
 
 def convert_to_color(result: list[LetterState]):
     result_color = []

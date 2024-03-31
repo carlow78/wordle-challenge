@@ -1,4 +1,3 @@
-
 from letter import LetterState
 
 class Wordle:
@@ -39,7 +38,7 @@ class Wordle:
     def remain_attempts(self) -> int:
        return self.MAX_GUESSES - len(self.guesses)
 
-    
+
     # Function to allow player only 6 guesses (MAX_GUESSES)
     
     @property 
