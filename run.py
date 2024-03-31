@@ -19,6 +19,10 @@ def main():
            print(Fore.RED + f"Guess must be {wordle.WORD_LENGTH} characters long." + Fore.RESET)
            continue
        
+       if not i in word_list:
+           print(Fore.RED + f"{i} is not recognized as a valid word." + Fore.RESET)
+           continue
+       
        wordle.attempt(i)
        display(wordle)               
 
