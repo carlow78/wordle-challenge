@@ -12,8 +12,7 @@ def main():
        if len(i) != wordle.WORD_LENGTH:
            print(Fore.RED + f"Guess must be {wordle.WORD_LENGTH} characters long." + Fore.RESET)
            continue
-    
-    
+       
        wordle.attempt(i)
        display(wordle)               
 
@@ -44,9 +43,9 @@ def convert_to_color(result: list[LetterState]):
         if letter.is_in_spot:
             color = Fore.GREEN
         elif letter.is_in_word:
-            color = Fore.YELLOW
-        else:
             color = Fore.BLUE
+        else:
+            color = Fore.RED
         color_letter = color + letter.character + Fore.RESET
         result_color.append(color_letter)
     return " ".join(result_color)
