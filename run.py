@@ -26,6 +26,7 @@ def main():
         print("You have guessed the word. Congrats")
     else:
         print("You have run out of guesses!")
+        print(f"The word was: {wordle.secret}")
 
 def display(wordle: Wordle):
     print("\nResult so far: \n")
