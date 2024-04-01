@@ -5,17 +5,18 @@ from colorama import Fore
 import random
 
 '''
-Gameplay adapted following along with this Youtube tutorial - https://www.youtube.com/watch?v=SyWeex-S6d0.
+Gameplay adapted following along with this Youtube tutorial -
+https://www.youtube.com/watch?v=SyWeex-S6d0.
 
 '''
+
 
 def main():
 
     '''
-    Main function of the game. A word from the "wordle_five.txt" in the assets folder is picked randomly using the python random function.
-
+    Main function of the game. A word from the "wordle_five.txt"
+    in the assets folder is picked randomly using the python random function.
     '''
-
 
     word_list = load_word_list("assets/wordle_five.txt")
     secret = random.choice(list(word_list))
@@ -25,10 +26,14 @@ def main():
     
     print("HOW TO PLAY:\n")
     print("* Type your 5 letter worded guess. At the prompt below.\n")      
-    print("* If your guess contains a letter in the same position as the random word. \n It will highlight in",Fore.GREEN + "Green.\n" + Fore.RESET)
-    print("* If your guess contains a letter that is in the random word but not in its \n current position. It will highlight in",Fore.BLUE + "Blue.\n" + Fore.RESET)
-    print("* If your guess contains a letter that is not in the random word. \n It will highlight in",Fore.RED + "Red.\n" + Fore.RESET)
-    print("You have 6 attempts to guess the game's randomly selected 5 letter word. \n GOOD LUCK! \n")
+    print("* If your guess contains a letter in the same position as the random"
+          "word. \nIt will highlight in",Fore.GREEN + "Green.\n" + Fore.RESET)
+    print("* If your guess contains a letter that is in the random word but not in its \n" 
+          "current position. It will highlight in",Fore.BLUE + "Blue.\n" + Fore.RESET)
+    print("* If your guess contains a letter that is not in the random word. \n" 
+          "It will highlight in",Fore.RED + "Red.\n" + Fore.RESET)
+    print("You have 6 attempts to guess the game's randomly selected 5 letter" 
+          "word.\n GOOD LUCK! \n")
     
     while wordle.guess_attempt:
       
