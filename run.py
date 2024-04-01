@@ -28,7 +28,7 @@ def main():
     print("* If your guess contains a letter in the same position as the random word. \n It will highlight in",Fore.GREEN + "Green.\n" + Fore.RESET)
     print("* If your guess contains a letter that is in the random word but not in its \n current position. It will highlight in",Fore.BLUE + "Blue.\n" + Fore.RESET)
     print("* If your guess contains a letter that is not in random word. \n It will highlight in",Fore.RED + "Red.\n" + Fore.RESET)
-    print("You have 6 attempts to guess the game's randomly selected 5 letter word. GOOD LUCK! \n")
+    print("You have 6 attempts to guess the game's randomly selected 5 letter word. \n GOOD LUCK! \n")
     
     while wordle.guess_attempt:
       
