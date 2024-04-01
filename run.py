@@ -17,16 +17,18 @@ def main():
     wordle = Wordle(secret)
 
     print("\n---- Welcome to Worldle ----\n")
-    print("You have 6 attempts to guess the game's randomly selected 5 letter word.\n")
-    print("If your guess contains a letter in the same position as the random word. It will highlight in",Fore.GREEN + "Green.\n" + Fore.RESET)
-    print("If your guess contains a letter that is in the random word but not in its current position. It will highlight in",Fore.BLUE + "Blue.\n" + Fore.RESET)
-    print("If your guess contains a letter that is not in random word. It will highlight in",Fore.RED + "Red.\n" + Fore.RESET)
-    print("---- GOOD LUCK ----\n")
+    
+    print("HOW TO PLAY:\n")
+    print("* Type your 5 letter worded guess. At the prompt below.\n")      
+    print("* If your guess contains a letter in the same position as the random word. It will highlight in",Fore.GREEN + "Green.\n" + Fore.RESET)
+    print("* If your guess contains a letter that is in the random word but not in its current position. It will highlight in",Fore.BLUE + "Blue.\n" + Fore.RESET)
+    print("* If your guess contains a letter that is not in random word. It will highlight in",Fore.RED + "Red.\n" + Fore.RESET)
+    print("You have 6 attempts to guess the game's randomly selected 5 letter word. GOOD LUCK! \n")
     
     while wordle.guess_attempt:
       
        
-       i = input("Enter your guess:\n")
+       i = input("Enter your guess:")
        i = i.upper()
 
        if len(i) != wordle.WORD_LENGTH:
