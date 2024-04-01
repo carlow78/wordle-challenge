@@ -1,3 +1,11 @@
+'''
+The function of this script file is to reduce the words in this file - 
+(https://github.com/first20hours/google-10000-english/blob/master/google-10000-english-usa-no-swears-medium.txt).
+Which contains 5-8 letter words to just the 5 letter words.
+Writing the results to wordle_five.txt.
+The total amount of 1367 words will be used for the game.
+'''
+
 def main():
     input_file_path = "assets/word.txt"
     output_file_path = "assets/wordle_five.txt"

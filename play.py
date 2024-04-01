@@ -4,20 +4,24 @@ class Wordle:
 
     MAX_GUESSES = 6
     WORD_LENGTH = 5
+ 
 
     def __init__(self, secret: str):
-        self.secret: str = secret.upper()
+        self.secret: str = secret.upper() # capitalizes the player's guess
         self.guesses = []
         pass
 
     def attempt(self, word: str):
         word = word.upper() 
         self.guesses.append(word)
+   
 
     def guess(self, word: str):
         word = word.upper()
         result = []
 
+# Checks to see if any letter in the player's are within the randomly selected word.
+        
         for x in range(self.WORD_LENGTH):
             character = word[x]
             letter = LetterState(character)
@@ -40,7 +44,6 @@ class Wordle:
 
 
     # Function to allow player only 6 guesses (MAX_GUESSES)
-    
     @property 
     def guess_attempt(self):
         return self.remain_attempts > 0 and not self.game_over

@@ -4,14 +4,29 @@ from play import Wordle
 from colorama import Fore
 import random
 
+'''
+Gameplay adapted following along with this Youtube tutorial - https://www.youtube.com/watch?v=SyWeex-S6d0.
+
+'''
+
 def main():
+
 
     word_list = load_word_list("assets/wordle_five.txt")
     secret = random.choice(list(word_list))
     wordle = Wordle(secret)
+
+    print("\n---- Welcome to Worldle ----\n")
+    print("You have 6 attempts to guess the game's randomly selected 5 letter word.\n")
+    print("If your guess contains a letter in the same position as the random word. It will highlight in",Fore.GREEN + "Green.\n" + Fore.RESET)
+    print("If your guess contains a letter that is in the random word but not in its current position. It will highlight in",Fore.BLUE + "Blue.\n" + Fore.RESET)
+    print("If your guess contains a letter that is not in random word. It will highlight in",Fore.RED + "Red.\n" + Fore.RESET)
+    print("---- GOOD LUCK ----\n")
     
     while wordle.guess_attempt:
-       i = input("\nEnter your guess:")
+      
+       
+       i = input("Enter your guess:\n")
        i = i.upper()
 
        if len(i) != wordle.WORD_LENGTH:
@@ -56,6 +71,12 @@ def load_word_list(path: str):
     return word_list
 
 def convert_to_color(result: list[LetterState]):
+
+# Converts user guesses to the colors for feedback.
+# Green if its in the same spot in the chosen random word.
+# Blue if its in the word but its not in the right position.
+# Red if its not in the word at all.
+
     result_color = []
     for letter in result:
         if letter.is_in_spot:
@@ -68,7 +89,10 @@ def convert_to_color(result: list[LetterState]):
         result_color.append(color_letter)
     return " ".join(result_color)
 
+
 def game_border(lines: list[str], size: int=9, pad: int=1):
+
+# Creates a box around user guesses using https://en.wikipedia.org/wiki/Box-drawing_character
     
     length = size + pad * 2
     top = "╔" + "═" * length + "╗"

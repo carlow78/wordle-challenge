@@ -1,3 +1,6 @@
+
+#The purpose of this file is to initialize our character states as False at the start.
+
 class LetterState:
 
     def __init__(self, character: str):
