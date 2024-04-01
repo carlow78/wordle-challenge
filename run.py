@@ -12,7 +12,7 @@ Gameplay adapted following along with this Youtube tutorial - https://www.youtub
 def main():
 
     '''
-    Main function of the game. A word from the "wordle_five.txt" in the assets folder is picked randomly using random function.
+    Main function of the game. A word from the "wordle_five.txt" in the assets folder is picked randomly using the python random function.
 
     '''
 
@@ -27,7 +27,7 @@ def main():
     print("* Type your 5 letter worded guess. At the prompt below.\n")      
     print("* If your guess contains a letter in the same position as the random word. \n It will highlight in",Fore.GREEN + "Green.\n" + Fore.RESET)
     print("* If your guess contains a letter that is in the random word but not in its \n current position. It will highlight in",Fore.BLUE + "Blue.\n" + Fore.RESET)
-    print("* If your guess contains a letter that is not in random word. \n It will highlight in",Fore.RED + "Red.\n" + Fore.RESET)
+    print("* If your guess contains a letter that is not in the random word. \n It will highlight in",Fore.RED + "Red.\n" + Fore.RESET)
     print("You have 6 attempts to guess the game's randomly selected 5 letter word. \n GOOD LUCK! \n")
     
     while wordle.guess_attempt:
@@ -42,27 +42,24 @@ def main():
            continue
        
        if not i in word_list:
-           print(Fore.RED + f"{i} is not recognized as a valid word." + Fore.RESET) # Only words from wordle_txt file are recognized as being valid.
+           print(Fore.RED + f"{i} is not recognized as a valid word." + Fore.RESET) # Only words from wordle_five.txt file are recognized as being valid.
            continue
        
        wordle.attempt(i)
        display(wordle)               
 
     if wordle.game_over:
-        print("You have guessed the word. Congrats")
+        print("You have guessed the word. Congrats") # Appears when the word has been guessed successfully.
     else:
         print("You have run out of guesses!")
         print(f"The word was: {wordle.secret}") # Tells the player what the word was after attempts are exhausted.
 
 def display(wordle: Wordle):
     print("\nResult so far: \n")
-    print(f"{wordle.remain_attempts} attempts left.")
+    print(f"{wordle.remain_attempts} attempts left.") # Displays the remaining attempts (MAX = 6)
 
     lines = []
 
-    '''
-    The below loop converts the words in the player's guesses into 
-    '''
 
     for word in wordle.guesses:
         result = wordle.guess(word)
@@ -84,10 +81,12 @@ def load_word_list(path: str):
 
 def convert_to_color(result: list[LetterState]):
 
-# Converts user guesses to the colors for feedback.
-# Green if its in the same spot in the chosen random word.
-# Blue if its in the word but its not in the right position.
-# Red if its not in the word at all.
+    '''
+    The below function converts the letters in the player's guesses into colors.
+    Green if the letter is in the same spot as the random word.
+    Blue if its in the word but not in its current position.
+    Finally, Red if the letter(s) is not in the word.
+    '''
 
     result_color = []
     for letter in result:
@@ -104,7 +103,7 @@ def convert_to_color(result: list[LetterState]):
 
 def game_border(lines: list[str], size: int=9, pad: int=1):
 
-# Creates a box around user guesses using https://en.wikipedia.org/wiki/Box-drawing_character
+# Creates a box around the 6 guesses using https://en.wikipedia.org/wiki/Box-drawing_character
     
     length = size + pad * 2
     top = "╔" + "═" * length + "╗"
