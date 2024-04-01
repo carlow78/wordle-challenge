@@ -11,6 +11,11 @@ Gameplay adapted following along with this Youtube tutorial - https://www.youtub
 
 def main():
 
+    '''
+    Main function of the game. A word from the "wordle_five.txt" in the assets folder is picked randomly using random function.
+
+    '''
+
 
     word_list = load_word_list("assets/wordle_five.txt")
     secret = random.choice(list(word_list))
@@ -20,9 +25,9 @@ def main():
     
     print("HOW TO PLAY:\n")
     print("* Type your 5 letter worded guess. At the prompt below.\n")      
-    print("* If your guess contains a letter in the same position as the random word. It will highlight in",Fore.GREEN + "Green.\n" + Fore.RESET)
-    print("* If your guess contains a letter that is in the random word but not in its current position. It will highlight in",Fore.BLUE + "Blue.\n" + Fore.RESET)
-    print("* If your guess contains a letter that is not in random word. It will highlight in",Fore.RED + "Red.\n" + Fore.RESET)
+    print("* If your guess contains a letter in the same position as the random word. \n It will highlight in",Fore.GREEN + "Green.\n" + Fore.RESET)
+    print("* If your guess contains a letter that is in the random word but not in its \n current position. It will highlight in",Fore.BLUE + "Blue.\n" + Fore.RESET)
+    print("* If your guess contains a letter that is not in random word. \n It will highlight in",Fore.RED + "Red.\n" + Fore.RESET)
     print("You have 6 attempts to guess the game's randomly selected 5 letter word. GOOD LUCK! \n")
     
     while wordle.guess_attempt:
@@ -30,13 +35,14 @@ def main():
        
        i = input("Enter your guess:")
        i = i.upper()
+    
 
        if len(i) != wordle.WORD_LENGTH:
-           print(Fore.RED + f"Guess must be {wordle.WORD_LENGTH} characters long." + Fore.RESET)
+           print(Fore.RED + f"Guess must be {wordle.WORD_LENGTH} characters long." + Fore.RESET) # Restrict the guesses to 5 letter words ONLY
            continue
        
        if not i in word_list:
-           print(Fore.RED + f"{i} is not recognized as a valid word." + Fore.RESET)
+           print(Fore.RED + f"{i} is not recognized as a valid word." + Fore.RESET) # Only words from wordle_txt file are recognized as being valid.
            continue
        
        wordle.attempt(i)
@@ -46,13 +52,17 @@ def main():
         print("You have guessed the word. Congrats")
     else:
         print("You have run out of guesses!")
-        print(f"The word was: {wordle.secret}")
+        print(f"The word was: {wordle.secret}") # Tells the player what the word was after attempts are exhausted.
 
 def display(wordle: Wordle):
     print("\nResult so far: \n")
     print(f"{wordle.remain_attempts} attempts left.")
 
     lines = []
+
+    '''
+    The below loop converts the words in the player's guesses into 
+    '''
 
     for word in wordle.guesses:
         result = wordle.guess(word)
