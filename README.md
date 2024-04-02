@@ -1,11 +1,11 @@
-# Tower of Hanoi
+# Wordle
 
-Towers of Hanoi is a Python command line interface (CLI) application which allows the user to play a well-know game of <a href="https://en.wikipedia.org/wiki/Tower_of_Hanoi" target="_blank" rel="noopener">Tower of Hanoi</a>. The user has an option to choose the difficulty level. The easy level can be played in a minute, the more difficult levels will take some time, but will help the user develop and improve their logical thinking. 
+Wordle is a Python command line interface (CLI) application which allows the user to play the well-known game of <a href="https://mashable.com/article/wordle-word-game-what-is-it-explained" target="_blank" rel="noopener">Wordle</a>. 
 
-This game can be played both by adults and children. In fact, the inspiration for replicating this game for my project came from seeing my daughter enjoy playing this game.
+This game can be played both by adults and children. To improve their vocabulary.
 
-You can play the Towers of Hanoi here:
-[Towers of Hanoi](https://towers-of-hanoi-game.herokuapp.com/)
+You can play the game here:
+[Wordle](https://wordle-challenge-8b5fbd02f69c.herokuapp.com/)
 
 [Back to top](#contents)
 
