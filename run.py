@@ -35,7 +35,7 @@ def main():
     print("* If your guess contains a letter that is not in the random word. \n"
           "It will highlight in",Fore.RED + "Red.\n" + Fore.RESET)
     print("You have 6 attempts to guess the game's randomly selected 5 letter" 
-          "word.\n GOOD LUCK! \n")
+          " 1we3word.\n GOOD LUCK! \n")
     
     while play_game is True and wordle.guess_attempt:
 
@@ -63,6 +63,7 @@ def main():
                 play_game = True
                 main()
         elif user_input == "n":
+                print("Goodbye!")
                 play_game = False        
 
     else:
@@ -73,6 +74,7 @@ def main():
                 play_game = True
                 main()
         elif user_input == "n":
+                print("Goodbye!")
                 play_game = False
 
 def display(wordle: Wordle):

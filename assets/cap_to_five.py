@@ -1,6 +1,7 @@
 '''
 Keeping script file for reference ONLY. Letters for game now drawn from 
 https://github.com/charlesreid1/five-letter-words/blob/master/sgb-words.txt
+
 The function of this script file is to reduce the words in this file -
 (https://github.com/first20hours/google-10000-english/blob/master/google-10000-english-usa-no-swears-medium.txt).
 Which contains 5-8 letter words to just the 5 letter words.
