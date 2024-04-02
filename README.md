@@ -11,7 +11,7 @@ You can play the game here:
 
 # Contents
 
-- [Tower of Hanoi](#tower-of-hanoi)
+- [Wordle](#Wordle)
 - [Contents](#contents)
 - [User Experience (UX)](#user-experience-ux)
   - [User Stories](#user-stories)
@@ -62,10 +62,14 @@ You can play the game here:
 
 ### Primary Goal
 
-The primary goal of this CLI application is to provide a simple game for children and adults to help them develop critical logical skills, but at the same time to teach them patience and perseverence, especially when playing the more difficult levels.
+The primary goal of this CLI application is to provide a simple game for children and adults to help them develop their mastery and logical skills to improve their grasp of the English language.
+
+The game features <b>5,575</b> five letter words.
 
 ### Visitor Goals
-Towers of Hanoi game has been designed to be straightforward, with minimalist design due to using CLI. The current version is aimed at people who enjoy puzzles and challenges so they can put their logical skills to test. The user can choose a level of difficulty and can challenge themselves the beat the minimum number of moves needed.
+The goal of the game is guess the randomly selected 5 letter word within 6 attempts.
+
+To aid the player they will be given feedback for each of their guesses.
 
 #### First Time Visitor
   - A user can read the welcome message.
