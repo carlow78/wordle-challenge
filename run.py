@@ -1,11 +1,11 @@
-from typing import List
+
 from letter import LetterState
 from play import Wordle
 from colorama import Fore
 import random
 
 '''
-Gameplay adapted following along with this Youtube tutorial -
+Gameplay adapted using this Youtube tutorial -
 https://www.youtube.com/watch?v=SyWeex-S6d0.
 
 '''
