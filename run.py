@@ -15,28 +15,30 @@ def main():
 
     '''
     Main function of the game. A word from the "wordle_five.txt"
-    in the assets folder is picked randomly using the python random function.
+    using https://github.com/charlesreid1/five-letter-words/blob/master/sgb-words.txt
+    in the assets folder is picked at randomly using python random.
     '''
 
     word_list = load_word_list("assets/wordle_five.txt")
     secret = random.choice(list(word_list))
     wordle = Wordle(secret)
+    play_game = True
 
     print("\n---- Welcome to Worldle ----\n")
-    
     print("HOW TO PLAY:\n")
-    print("* Type your 5 letter worded guess. At the prompt below.\n")      
-    print("* If your guess contains a letter in the same position as the random"
-          "word. \nIt will highlight in",Fore.GREEN + "Green.\n" + Fore.RESET)
-    print("* If your guess contains a letter that is in the random word but not in its \n" 
+    print("* Type your 5 letter worded guess. At the prompt below.\n")   
+    print("* If your guess contains a letter in the same position as the" 
+           " random word. \nIt will highlight in",Fore.GREEN + "Green.\n" + 
+           Fore.RESET)
+    print("* If your guess contains a letter that is in the random word but not in its \n"
           "current position. It will highlight in",Fore.BLUE + "Blue.\n" + Fore.RESET)
-    print("* If your guess contains a letter that is not in the random word. \n" 
+    print("* If your guess contains a letter that is not in the random word. \n"
           "It will highlight in",Fore.RED + "Red.\n" + Fore.RESET)
     print("You have 6 attempts to guess the game's randomly selected 5 letter" 
           "word.\n GOOD LUCK! \n")
     
-    while wordle.guess_attempt:
-      
+    while play_game is True and wordle.guess_attempt:
+
        
        i = input("Enter your guess:")
        i = i.upper()
@@ -51,20 +53,33 @@ def main():
            continue
        
        wordle.attempt(i)
-       display(wordle)               
+       display(wordle)            
 
     if wordle.game_over:
-        print("You have guessed the word. Congrats") # Appears when the word has been guessed successfully.
+        print("You have guessed the word. Congrats!") # Appears when the word has been guessed successfully.
+        print(f"With {wordle.remain_attempts} attempts remaining.") 
+        user_input = input(f"PLAY AGAIN Y/N:").lower()
+        if user_input == "y":
+                play_game = True
+                main()
+        elif user_input == "n":
+                play_game = False        
+
     else:
         print("You have run out of guesses!")
-        print(f"The word was: {wordle.secret}") # Tells the player what the word was after attempts are exhausted.
+        print(f"The word was: {wordle.secret}.\n") # Tells the player what the word was after attempts are exhausted.
+        user_input = input(f"PLAY AGAIN Y/N:").lower()
+        if user_input == "y":
+                play_game = True
+                main()
+        elif user_input == "n":
+                play_game = False
 
 def display(wordle: Wordle):
     print("\nResult so far: \n")
     print(f"{wordle.remain_attempts} attempts left.") # Displays the remaining attempts (MAX = 6)
 
     lines = []
-
 
     for word in wordle.guesses:
         result = wordle.guess(word)
