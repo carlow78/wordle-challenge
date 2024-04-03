@@ -83,7 +83,7 @@ Before developing the application, I created a flow chart using LucidCharts (see
 
 For this project, I did not create any wireframes, as the application is rather simple in layout and is mainly intended to be played on the desktop. 
 
-My main goal was for the content to fit within the restricted size of the window and to have all the features down to the user input prompt to be visible when launching in the Code Institute's Heroku application environment.
+
 
 Example of requirements taken into account:
 
@@ -99,7 +99,11 @@ Example of requirements taken into account:
 
 [Back to top](#contents)
 ### App Structure
-The app structure is very simple and uniformed as it is a CLI application and its dimensions are restricted by the display window of 80 characters per line on max 24 lines.
+The application structure is very simple and uniformed as it is a CLI application and its dimensions are restricted by the display window of 80 characters per line on max 24 lines.
+
+My main goal was for the content to fit within the restricted size of the window and to have all the features down to the user input prompt to be visible when launching in the Heroku application environment.
+
+ ![Start screen](assets/images/start-screen.png)
 
 [Back to top](#contents)
 
@@ -117,6 +121,11 @@ The app structure is very simple and uniformed as it is a CLI application and it
 
 I tried to keep the game design very simple and legible. To make the letters for the user's guesses and how to play instructions to stand out I used [Colorama](https://pypi.org/project/colorama/).
 
+I used a rectangular box to show all 6 guesses using [Box-drawing characters](https://en.wikipedia.org/wiki/Box-drawing_character).
+
+![Rectangular Game Box](assets/images/game-border.png)
+
+
 [Back to top](#contents)
 ### Typography
 
@@ -126,53 +135,58 @@ I have not altered the type of font, as the original one I thought was legible a
 
 ### Color Scheme
 
-As regards the color scheme, as I explained in the Design Choices I chose to install Coloroma. It is a key component to the game and I will explain my reasonings for using it in the next section.
+As regards the color scheme, as I explained in the Design Choices section I chose to install Coloroma. It is a key component to the game and in the next section I will explain more.
 
 [Back to top](#contents)
 
 # Features
 
 [Back to top](#contents)
+
 ### Mechanism of the Game
 
-The idea of the game is simple try and guess the five letter word randomly selected by the application from the text file wordle.txt. 
+The idea of the game is simple to try and guess the five letter word randomly selected by the application at the start of the game. The text file <u>wordle_five.txt</u> is used to validate and to ensure only five-letter words are used.
 
-#### ad 1) FROM BASE
+#### ad 1) ATTEMPTS
 
-The user must indicate from which base they want to move the disk. They may not take a disk from an empty base. They must choose a number between 1 and 3. If a mistake is made, the user is alerted by a message printed in red and they are prompted to correct their choice.
+The game is limited to 6 attempts each time the user makes a guess they are informed how many attempts they have remaining.
 
-#### ad 2) TO BASE
+![Wordle Green](assets/images/wordle-attempts.png)
 
-The user must indicate on which base they want to place the disk. They must choose a number between 1 and 3. If a mistake is made, the user is alerted by a message printed in red and they are prompted to correct their choice. They may not place a disk on a base where the top disk is smaller than the chosen one.
 
-[How to play video](/readme-images/mechanism_of_the_game.webm)
+#### ad 2) GREEN LETTER
 
-[Back to top](#contents)
-### Scores
+After each guess the user receives feedback to tell them if any of the letters contained in their guess are in the randomly selected word. 
+To assist them, if any of the letters that are in the same spot as the randomly selected word. This letter (and any other letter) will highlight in GREEN and display within the rectangular game box.
 
-Each time the user moves a disk from one stack/pyramid to another, the number of moves is increased. The moves are displayed when the user has accomplished moving all the disks from the first base to the third base in the winning message, see below.
+#### ad 3) BLUE LETTER
+
+If any of the letters that are in the randomly selected word but not in their current position they are highlighted in BLUE.
+
+#### ad 4) RED LETTER
+
+Finally, if a letter is not in the randomly selected word they are highlighted in RED. 
 
 [Back to top](#contents)
 
 ### Winning message
 
-When the user manages to move all the disks from the 1st base to the last one, they are informed of successfully finishing the game. 
+When the user manages to guess
 
 ![The Winning message](/readme-images/congratulations.png)
 
-Within the winning message, the user is informed of the number of moves they used. This number is compared to the minimum number of moves which is 2**n -1. This can motivate the user to decrease the number of moves they use next time, or the user is congratulated on the use of minimum number of moves if that's what they achieved.
+Within the winning message, the user is informed of the number of moves they used. 
 
 At the end, the user gets a choice to play again or to quit the game. 
 
-When the user chooses the Play again option, the game is reset to the intial settings and the user can newly choose the level of difficulty.
+When the user chooses the Play again option, the game is reset to the intial settings and enter their first guess.
 
-When the user chooses to quit, a good bye message is displayed.
+When the user chooses to quit, a goodbye message is displayed.
 
 ![Good-bye message](readme-images/good_bye.png)
 
 [Back to top](#contents)
 ### Future Features
-- I would like to improve the visualization of the disk being moved for the user to clearly see the moved disk. This is mainly because of a confusing situation when the user is trying to move a disk which is bigger than top disks on all the other stacks and thus has to return the disk to its original position. 
 
 - In the future, I could also implement the user name usage and score tracking functionality.
 
@@ -181,11 +195,9 @@ When the user chooses to quit, a good bye message is displayed.
 # Technologies Used
 - [Github](https://github.com/) - Used for hosting the repository.
 - [Heroku](https://heroku.com/) - Used for deploying the application.
-- [Gitpod](https://www.gitpod.io/#get-started) - Used for developing the application.
+- [Xvode](https://www.gitpod.io/#get-started) - Used for developing the application.
 - [Python](https://www.python.org/) - Used for adding functionality to the application.
-- [Projects in GitHub](https://github.com/lucia2007?tab=projects) - Used for project managament.
-- [CI Python Linter](https://pep8ci.herokuapp.com/#) - Used for validation python code.
-- [Markdown Table Generator](https://www.tablesgenerator.com/markdown_tables) - Used to generate tables in Markdown.
+- [CI Python Linter](https://pep8ci.herokuapp.com/#) - Used for validation of python code.
 - [Draw.io](https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio) - Used for creating the dependency diagram.
 
 [Back to top](#contents)
@@ -193,10 +205,7 @@ When the user chooses to quit, a good bye message is displayed.
 # Python Packages
 
 * [Colorama](https://pypi.org/project/colorama/) - Used to add colours to the terminal.
-* [Time](https://docs.python.org/3/library/time.html) - Used for the slow print functionality and for delaying print statements.
-* [Sys](https://docs.python.org/3/library/sys.html) - Used to provide access to some variables used or maintained by the interpreter.
-* [Random](https://docs.python.org/3/library/random.html) - Used within the slow print functionality.
-* [OS](https://docs.python.org/3/library/os.html) - Used to clear the screen in the terminal.
+* [Random](https://docs.python.org/3/library/random.html) - Used to select a random word for each game.
 
 # Testing
 
@@ -204,10 +213,7 @@ For testing the application, I used manual testing and external validators. Both
 
 ### Manual testing
   - I used manual testing throughout the whole development phase of the project. Mainly:
-    - I frequently checked if all the inputs were valid, namely if my validation functions were catching all errors and exceptions. (Details are in the [Testing file](TESTING.md).)
     - I played the game repeatedly to see if the correct winning message was displaying when the user finished the game.
-    - I made sure that when the user chose to play again, they would be taken to the choice of a difficulty level and the moves counter was cleared (setting of the initial state).
-    - I checked if a good-bye message displayed after the user chose not to play again.
 
 ### External Testing
   All external testing is a part of a separate testing [file](/TESTING.md).
