@@ -22,7 +22,6 @@ You can play the game here:
       - [Frequent Visitor](#frequent-visitor)
   - [Creation Process](#creation-process)
     - [Planning](#planning)
-    - [Projects Tool](#projects-tool)
     - [Dependency diagram](#dependency-diagram)
     - [App Structure](#app-structure)
     - [Python Logic](#python-logic)
@@ -62,78 +61,56 @@ You can play the game here:
 
 ### Primary Goal
 
-The primary goal of this CLI application is to provide a simple game for children and adults to help them develop their mastery and logical skills to improve their grasp of the English language.
+The primary goal of this CLI application is to provide a simple game for children and adults to help them develop their mastery and logical skills and to improve their grasp of the English language.
 
-The game features <b>5,575</b> five letter words.
+The game features <b>5,757</b> five letter words.
 
 ### Visitor Goals
-The goal of the game is guess the randomly selected 5 letter word within 6 attempts.
+The goal of the game is to guess the randomly selected 5 letter word within 6 attempts.
 
-To aid the player they will be given feedback for each of their guesses.
+To aid the user they will be given feedback for each of their guesses.
 
 #### First Time Visitor
+
   - A user can read the welcome message.
   - A user can find the game rules on the opening screen.
-  - A user can choose the level of difficulty by indicating a number of disks they want to play with.
   - A user can expect a visual feedback for warnings, but also for winning the game.
-  - A user can expect the number of moves to be displayed in the winning message.
-  - A user can compare their number of moves with the minimum number of moves needed.
+  - A user can expect the number of attempts to be displayed in the winning message.
   - A user can choose to Play again after they have won, or choose to leave the game.
-#### Returning Visitor
-  - A user is familiar with the rules and can start the game by clicking the Run button.
-  - A user can choose the level of difficulty. The more disks they choose, the more difficult the game.
 
-#### Frequent Visitor
-  - A user can try to use the minimum number of moves which according to [Wikipeadia](https://en.wikipedia.org/wiki/Tower_of_Hanoi) is 2**n - 1.
-
+#### Returning and Frequent Visitor
+  - A user who is familiar with the rules and has played before can begin straight away by typing their five-letter word. With 5757 random words the game can be played as often as they want to.
 
 [Back to top](#contents)
 ## Creation Process
 ### Planning
 
-Before I started working on the actual application, I created a flow chart (see below) which helped me organize dependencies and provided me with a blueprint to follow when developing the app. This was extremely useful especially in moments when it was not clear where a certain function or a feature belonged, what the dependencies were or what should be tackled next. 
+Before developing the application, I created a flow chart using LucidCharts (see below) which helped me organize dependencies and provided me with a blueprint to follow when developing the application. This was extremely useful especially in moments when it was not clear where a certain function or a feature belonged, what the dependencies were or what should be tackled next. 
 
-I tried to break each step into a managable bite-size function so the code would be easy to read and understand. I started by figuring out the dimensions of my disks and the maximum number of disks the user would be able to use for choosing difficulty levels. Afterwards, I focused on being able to move the disks from one base to another. At first I was printing the pyramids below each other for simplicity, but later I changed the layout to parallel for better readability and to go back to the original layout. Towards the end of the development process, I started adding some nice-to-have features, like clearing the screen for a less messy output or shortening and rephrasing the rules and prompts for better comprehension. As I went, I refactored the code wherever possible to make it easily comprehensible.
+I tried to break each step into a managable bite-size function so the code would be easy to read and understand. As I went, I refactored the code wherever possible to make it easily comprehensible.
 
-For this project, I did not create any wireframes, as the application is rather simple in layout and is mainly intended to be played on the desktop. But, I was inspired by this [picture](readme-images/tower-of-hanoi.png) and this [version in terminal](/readme-images/towers_of_hanoi_terminal.gif).
+For this project, I did not create any wireframes, as the application is rather simple in layout and is mainly intended to be played on the desktop. 
 
-My main goal was for the content to fit within the restricted size of the window. The width of the window also predetermined the highest level of difficulty, as the largest disks needed to fit three times next to each other on the screen of 80 characters. I used the clear function to keep the CLI neat and easily readable.
+My main goal was for the content to fit within the restricted size of the window and to have all the features down to the user input prompt to be visible when launching in the Heroku application environment.
 
 Example of requirements taken into account:
-  - The game will use simple and clear representation of the towers of Hanoi.
-  - The user will be able to choose the level of difficulty.
-  - The screen will be cleared periodically, so the user is not overwhelmed or confussed by a large number of print statements.
-  - The game will show the scores in the winning message and compare them to minimum required moves.
+  - The game will use simple and clear representation
   - The user will have a choice to play again or stop playing the game.
-  
-[Back to top](#contents)
-
-### Projects Tool
-
-I used Projects tool inbuilt in GitHub, [GitHub's Projects](https://github.com/lucia2007?tab=projects), to help me manage the scope of the project, to track my progress and record bugs, but also to jot down any ideas that were relevant for the application development. These ideas were either later applied in the code or dismissed if they did not seem to enhance the user's experience or improve the development process.
-
-Whenever I had an idea related to the project, I would jot it down in the "To Do" section. Later, I would choose 2, max 3 things that were currently being worked on and I placed them in the "In Progress" section. If I became stuck on a task for whatever reason or depended on external input, I moved it to "Blocked". At last, when a task was completed, I would move it to the "Done" section.
-
-This tool has been very benefitial for my development process, especially, because I could rely on having all the information there. I would write down the sources to be credited, or bugs to be fixed or ideas on how to improve some part of the application, so I did not have to worry about having forgotten something crucial. 
-
-In the future, for a bigger project, I would focus on a more detailed description of the tasks and adding next steps or a deadline for each of the entries.
-
-[GitHub Projects](readme-images/projects_tool.png)
 
 [Back to top](#contents)
 ### Dependency diagram
 
   This is the original flow chart where I broke the program into managable clear steps. 
 
-  [Dependency Diagram](dependency.drawio.svg)
+  ![Dependency Diagram](assets/images/wordle-lucid-chart.png)
 
 [Back to top](#contents)
 ### App Structure
-The app structure is very simple and uniform as it is a CLI application and its dimensions are restricted by the display window of 80 characters per line on max 24 lines.
+The app structure is very simple and uniformed as it is a CLI application and its dimensions are restricted by the display window of 80 characters per line on max 24 lines.
 
 [Back to top](#contents)
 ### Python Logic
-  The logic of the game itself is not very difficult: The goal is to move all the disks from the first base to the last base. The main restriction is that the user may not place a bigger disk on a smaller one. The game can become quite long and tedius if the user is just randomly moving the disks and is not trying to optimize the number of moves. On the other hand, it can be quite motivating to try to achieve the minumum number of moves.
+  The logic of the game itself is not very difficult: The goal is to correctly guess the application's randomly selected five letter word.
 
   I had to frequently manually validate the user's input to make sure that the correct type of input was returned. In case of a number input I had to check if a number was entered, and if it was within the required range. For a string, I had to check if the correct string was returned.
   
