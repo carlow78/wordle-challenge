@@ -34,8 +34,8 @@ def main():
           "current position. It will highlight in",Fore.BLUE + "Blue.\n" + Fore.RESET)
     print("* If your guess contains a letter that is not in the random word. \n"
           "It will highlight in",Fore.RED + "Red.\n" + Fore.RESET)
-    print("You have 6 attempts to guess the game's randomly selected 5 letter" 
-          " 1we3word.\n GOOD LUCK! \n")
+    print("You have 6 attempts to guess the game's randomly selected 5 letter word." 
+          "\n GOOD LUCK! \n")
     
     while play_game is True and wordle.guess_attempt:
 
@@ -45,7 +45,7 @@ def main():
     
 
        if len(i) != wordle.WORD_LENGTH:
-           print(Fore.RED + f"Guess must be {wordle.WORD_LENGTH} characters long." + Fore.RESET) # Restrict the guesses to 5 letter words ONLY
+           print(Fore.RED + f"Guess must be {wordle.WORD_LENGTH} characters long. Guess again." + Fore.RESET) # Restrict the guesses to 5 letter words ONLY
            continue
        
        if not i in word_list:
@@ -57,7 +57,7 @@ def main():
 
     if wordle.game_over:
         print("You have guessed the word. Congrats!") # Appears when the word has been guessed successfully.
-        print(f"With {wordle.remain_attempts} attempts remaining.") 
+        print(f"With {wordle.remain_attempts} attempt(s) remaining.") 
         user_input = input(f"PLAY AGAIN Y/N:").lower()
         if user_input == "y":
                 play_game = True

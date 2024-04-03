@@ -1,8 +1,10 @@
 # Wordle
 
-Wordle is a Python command line interface (CLI) application which allows the user to play the well-known game of <a href="https://mashable.com/article/wordle-word-game-what-is-it-explained" target="_blank" rel="noopener">Wordle</a>. 
+Wordle is a Python command line interface (CLI) application which allows the user to play the well-known game of <[a href="https://mashable.com/article/wordle-word-game-what-is-it-explained" target="_blank" rel="noopener">Wordle</a>. ](https://www.thesun.ie/tech/8147348/wordle-who-invented/)
 
-This game can be played both by adults and children. To improve their vocabulary.
+The game was invented by Josh Wardle (the game is a pun on his surname) during the Coronavirus lockdown to amuse himself and his wife. It was launched in October 2021 and it is now played by millions worldwide. The rights of the game were sold in January 2022 to the New York Times. <[a href="https://www.thesun.ie/tech/8147348/wordle-who-invented/" target="_blank" rel="noopener">Wordle</a>. 
+
+The game can be played both by adults and children. To improve their vocabulary and grasp of the English language.
 
 You can play the game here:
 [Wordle](https://wordle-challenge-8b5fbd02f69c.herokuapp.com/)
@@ -18,8 +20,7 @@ You can play the game here:
     - [Primary Goal](#primary-goal)
     - [Visitor Goals](#visitor-goals)
       - [First Time Visitor](#first-time-visitor)
-      - [Returning Visitor](#returning-visitor)
-      - [Frequent Visitor](#frequent-visitor)
+      - [Returning and Frequent Visitor](#returning-and-frequent-visitor)
   - [Creation Process](#creation-process)
     - [Planning](#planning)
     - [Dependency diagram](#dependency-diagram)
@@ -29,15 +30,7 @@ You can play the game here:
     - [Typography](#typography)
     - [Color Scheme](#color-scheme)
 - [Features](#features)
-    - [ASCII Art](#ascii-art)
-    - [Welcome message](#welcome-message)
-    - [Slow Print](#slow-print)
-    - [Difficulty Level](#difficulty-level)
-    - [Initial Picture](#initial-picture)
     - [Mechanism of the Game](#mechanism-of-the-game)
-      - [ad 1) FROM BASE](#ad-1-from-base)
-      - [ad 2) TO BASE](#ad-2-to-base)
-    - [Scores](#scores)
     - [Winning message](#winning-message)
     - [Future Features](#future-features)
 - [Technologies Used](#technologies-used)
@@ -79,21 +72,21 @@ To aid the user they will be given feedback for each of their guesses.
   - A user can choose to Play again after they have won, or choose to leave the game.
 
 #### Returning and Frequent Visitor
+
   - A user who is familiar with the rules and has played before can begin straight away by typing their five-letter word. With 5757 random words the game can be played as often as they want to.
 
 [Back to top](#contents)
 ## Creation Process
 ### Planning
 
-Before developing the application, I created a flow chart using LucidCharts (see below) which helped me organize dependencies and provided me with a blueprint to follow when developing the application. This was extremely useful especially in moments when it was not clear where a certain function or a feature belonged, what the dependencies were or what should be tackled next. 
-
-I tried to break each step into a managable bite-size function so the code would be easy to read and understand. As I went, I refactored the code wherever possible to make it easily comprehensible.
+Before developing the application, I created a flow chart using LucidCharts (see below) which helped me organize dependencies and provided me with a blueprint to follow when developing the application.
 
 For this project, I did not create any wireframes, as the application is rather simple in layout and is mainly intended to be played on the desktop. 
 
-My main goal was for the content to fit within the restricted size of the window and to have all the features down to the user input prompt to be visible when launching in the Heroku application environment.
+My main goal was for the content to fit within the restricted size of the window and to have all the features down to the user input prompt to be visible when launching in the Code Institute's Heroku application environment.
 
 Example of requirements taken into account:
+
   - The game will use simple and clear representation
   - The user will have a choice to play again or stop playing the game.
 
@@ -109,75 +102,41 @@ Example of requirements taken into account:
 The app structure is very simple and uniformed as it is a CLI application and its dimensions are restricted by the display window of 80 characters per line on max 24 lines.
 
 [Back to top](#contents)
+
 ### Python Logic
+
   The logic of the game itself is not very difficult: The goal is to correctly guess the application's randomly selected five letter word.
 
-  I had to frequently manually validate the user's input to make sure that the correct type of input was returned. In case of a number input I had to check if a number was entered, and if it was within the required range. For a string, I had to check if the correct string was returned.
-  
-  Anytime the user does not provide the correct input, they are informed about their mistake and asked to correct their choice. All warning messages are displayed in red, so the user is alerted about the mistake. 
-  
-  I also had to check for logical catches like preventing the user from taking a disk from an empty pyramid, or placing a bigger disk on a smaller one.
+  To aid the user they are given feedback as to which words closely match the randomly selected word.
 
-  I used (Object oriented programming) OOP in some parts of the application for better manipulation with the objects. This proved helpful especially when moving the disks from one stack to the other, or for drawing the pyramids.
+  Anytime, the user does not provide the correct amount of letters for the word (5 letters), they are informed about their mistake and asked to correct their choice. All warning messages are displayed in red, so the user is alerted about the mistake. 
 
 [Back to top](#contents)
 
 ## Design Choices
 
-I tried to keep the game design very simple and easily legible. However, I used ASCII art to make the welcome and good-bye screens a bit more interesting. I also used the ASCII Art to inform the user of their win. The winning message is in yellow color to make it stand out more.
+I tried to keep the game design very simple and legible. To make the letters for the user's guesses and how to play instructions to stand out I used [Colorama](https://pypi.org/project/colorama/).
 
 [Back to top](#contents)
 ### Typography
 
-I have not altered the type of script, as the original one is well suited for this app. 
+I have not altered the type of font, as the original one I thought was legible and worked well with the application. 
 
 [Back to top](#contents)
 
 ### Color Scheme
 
-As regards the color scheme, I mostly went along with the original setting, but I did install [Colorama](https://pypi.org/project/colorama/) in order to be able to use red color of font for warnings and yellow color for the winning display.
+As regards the color scheme, as I explained in the Design Choices I chose to install Coloroma. It is a key component to the game and I will explain my reasonings for using it in the next section.
 
 [Back to top](#contents)
 
 # Features
-### ASCII Art
-
-I choose to use ASCII Art on the welcome page to improve the user experience and to get the user interested.
-
-![ACSII Art](./readme-images/towers_of_hanoi_ascii.png)
-
-### Welcome message
-
-![Welcome message](./readme-images/welcome_message.png)
-
-As soon as the page is loaded, the ASCII Art is displayed and a welcome message is gradually printed out. In the welcome message the rules and mechanism of the game are explained. 
-### Slow Print
-
-The welcome message and the rules are printed slowly so the user is not overwhelmed by the long text they would have to read when opening the app. 
-
-The first few user options are displayed with a slight delay so the user has time to make a choice.
-
-[Back to top](#contents)
-
-### Difficulty Level
-
-After the welcome message, the user is promted to choose a number of disks they want to play with. The more disks the user chooses, the more difficult and longer the game.
-
-![Difficulty level](/readme-images/difficulty_level_input.png)
-
-The user is expected to enter a number between 3 and 6. If they choose a number smaller or bigger than the given range, they are informed of their mistake and prompted to choose a number from the indicated range. Also, they are alerted if they choose a string instead of a number.
-
-### Initial Picture
-
-After the user chooses a number of disks, a "playground" with the correct number of disks is displayed.
-
-![Initial Picture](readme-images/intial_picture.png)
 
 [Back to top](#contents)
 ### Mechanism of the Game
-A move consists of two steps:
-1. The user has to choose FROM WHICH base they want to take the top disk.
-2. The user has to indicate ON WHICH base they want to place the chosen disk.
+
+The idea of the game is simple try and guess the five letter word randomly selected by the application from the text file wordle.txt. 
+
 #### ad 1) FROM BASE
 
 The user must indicate from which base they want to move the disk. They may not take a disk from an empty base. They must choose a number between 1 and 3. If a mistake is made, the user is alerted by a message printed in red and they are prompted to correct their choice.
