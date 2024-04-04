@@ -2,12 +2,13 @@
 
 Wordle is a Python command line interface (CLI) application which allows the user to play the well-known game of <a href="https://mashable.com/article/wordle-word-game-what-is-it-explained" target="_blank" rel="noopener">Wordle</a>.
 
-The game was invented by Josh Wardle (Wordle is a pun on his surname) during the Coronavirus lockdown to amuse himself and his wife. It was launched in October 2021 and it is now played by millions worldwide. The rights of the game were sold in January 2022 to the New York Times. <a href="https://www.thesun.ie/tech/8147348/wordle-who-invented/" target="_blank" rel="noopener">Source</a>. 
+The game was invented by Josh Wardle (Wordle is a pun on his surname) during the Coronavirus lockdown to amuse himself and his wife. It was launched in October 2021 and it is now played by millions worldwide. The rights of the game were sold in January 2022 to the New York Times. <a href="https://www.thesun.ie/tech/8147348/wordle-who-invented/" target="_blank" rel="noopener">(Source)</a>. 
 
 The game can be enjoyed both by adults and children. To improve their vocabulary and grasp of the English language.
 
 You can play the game here:
 [Wordle](https://wordle-challenge-8b5fbd02f69c.herokuapp.com/)
+
 
 [Back to top](#contents)
 
@@ -36,8 +37,9 @@ You can play the game here:
 - [Technologies Used](#technologies-used)
 - [Python Packages](#python-packages)
 - [Testing](#testing)
-    - [Manual testing](#manual-testing)
-    - [External Testing](#external-testing)
+    - [Validation](#validation)
+   - [Lighthouse Testing](#lighthouse-testing)
+- [Bugs](#bugs)
 - [Deployment to Heroku](#deployment-to-heroku)
   - [Project Deployment](#project-deployment)
   - [To fork the repository on GitHub](#to-fork-the-repository-on-github)
@@ -80,8 +82,6 @@ To aid the user they will be given feedback for each of their guesses.
 Before developing the application, I created a flow chart using LucidCharts (see below) which helped me organize dependencies and provided me with a blueprint to follow when developing the application.
 
 For this project, I did not create any wireframes, as the application is rather simple in layout and is mainly intended to be played on the desktop. 
-
-
 
 Example of requirements taken into account:
 
@@ -222,11 +222,11 @@ If the user chooses 'N' and presses Enter, a goodbye message is displayed.
 
 For testing the application, I used manual testing and external validators.
 
-## Wordle_five.txt
+## Validation
 
-This text file is a key file for the application as well as being the source for the five-letter words for the game. It is also used to validate to ensure exactly five-letter words are inputted by the user. If there are more or less letters (or non letters ie integers) in their guess they are told to try again. Basically, if the word does not appear in the text file it is considered to be invalid. 
+The <i>word_five.txt</i> text file is a key file for the application as well as being the source for the five-letter words for the game. It is also used to validate to ensure exactly five-letter words are inputted by the user. If there are more or less letters (or non letters ie integers) in their guess they are told to try again. Basically, if the word does not appear in the text file it is considered to be invalid. 
 
-I used manual testing throughout the whole development phase of the project and created a smaller text file with five letter words for testing and validation purposes and for screenshots for this file.
+I used manual testing throughout the whole development phase of the project and created a smaller text file with five letter words for testing and validation purposes and for the screenshots for this file.
 
 
 Testing to ensure user guess is five letters in length:
@@ -245,17 +245,27 @@ Testing to ensure user guess is five letters in length:
 
 [Back to top](#contents)
 
+## Lighthouse testing
+
+The application has been tested in Lighthouse. Here are the results:
+
+![Lighthouse testing](assets/images/lighthouse-test.png)
+
 # Validation
 
 Code Institution's Python Linter was used to test Python code for semantic and stylistic problems. 
 
-All issues were fixed within linter application. Once I had fixed all errors I copied over the previous version of the file (after saving first).
+All issues were fixed within linter application. The most common error I had was trailing whitespaces and having too much content on a single line. Once I had fixed all errors I copied over the previous version of the file (after saving first).
 
 ![Pylint Run](assets/images/linter-run.py.png)
 
 The same test was also performed on the play.py file which is used by the application to check the states of the letter guesses for the game.
 
 ![Pylint Run](assets/images/linter-play.py.png)
+
+# Bugs
+
+As mentioned earlier the wordle_five.txt text file is not perfect but it performs its main purpose and acts as a good validation point despite its limitation such as possibly missing some five letter words.
 
 # Deployment to Heroku
 
