@@ -56,8 +56,6 @@ You can play the game here:
 
 The primary goal of this CLI application is to provide a simple game for children and adults to help them develop their mastery and logical skills and to improve their grasp of the English language.
 
-The game features <b>5,757</b> five letter words.
-
 ### Visitor Goals
 The goal of the game is to guess the randomly selected 5 letter word within 6 attempts.
 
@@ -73,7 +71,7 @@ To aid the user they will be given feedback for each of their guesses.
 
 #### Returning and Frequent Visitor
 
-  - A user who is familiar with the rules and has played before can begin straight away by typing their five-letter word. With 5757 random words the game can be played as often as they want to.
+  - A user who is familiar with the rules and has played before can begin straight away by typing their five-letter word. With <b>5,757</b> random words the game can be played as often as they want to.
 
 [Back to top](#contents)
 ## Creation Process
@@ -163,7 +161,7 @@ To assist them, if any of the letters that are in the same spot as the randomly 
 
 #### ad 3) BLUE LETTER
 
-If any of the letters that are in the randomly selected word but not in their current position they are highlighted in <span style="color:blue">Blue</span>.
+If any of the letters are in the randomly selected word but not in their current position they are highlighted in <span style="color:blue">Blue</span>.
 
 ![Wordle Blue](assets/images/wordle-blue.png)
 
@@ -178,17 +176,17 @@ Finally, if a letter is not in the randomly selected word they are highlighted i
 
 ### Winning message
 
-When the user manages to guess the application randomly selected.
+When the user manages to guess the application randomly selected word.
 
 The user is congratulated and informed of the number of attempts they had remaining.
 
 ![Wordle Win](assets/images/wordle-win.png)
 
-At the end, the user gets a choice to play again or to quit the game. 
+At the end, the user gets a choice to play again 'Y' or to quit the game 'N'. 
 
-When the user chooses the Play again option, the game is reset to the intial settings and allows them to enter their first guess.
+When the user types 'Y' and presses Enter, the game is reset to the intial settings and allows them to enter their first guess.
 
-If the user chooses to quit, a goodbye message is displayed.
+If the user chooses 'N' and presses Enter, a goodbye message is displayed.
 
 ![Wordle Goodbye](assets/images/wordle-goodbye.png)
 
@@ -200,7 +198,7 @@ If the user chooses to quit, a goodbye message is displayed.
 
 - ASCII word art for the game title and for the feedback.
 
-- Further checking of user guess validation. The text file works well has a source of validation but I am aware its not perfect it is missing some valid five letter words and may contain words that are not actually valid. But with 5757 words I hope it will provide the user hours of learning and fun.
+- Further checking of user guess validation. The text file works well as a source of validation but I am aware its not perfect. It is missing some valid five letter words and may contain words that are not actually valid. But with 5,757 words I hope it will provide the user hours of learning and fun.
 
 [Back to top](#contents)
 
@@ -222,18 +220,53 @@ If the user chooses to quit, a goodbye message is displayed.
 
 # Testing
 
-For testing the application, I used manual testing and external validators. Both manual and external testing are a part of a separate testing [file](/TESTING.md).
+For testing the application, I used manual testing and external validators.
 
-### Manual testing
-  - I used manual testing throughout the whole development phase of the project. Mainly:
-    - I played the game repeatedly to see if the correct winning message was displaying when the user finished the game.
+## Wordle_five.txt
 
-### External Testing
-  All external testing is a part of a separate testing [file](/TESTING.md).
+This text file is a key file for the application as well as being the source for the five-letter words for the game. It is also used to validate to ensure exactly five-letter words are inputted by the user. If there are more or less letters (or non letters ie integers) in their guess they are told to try again. Basically, if the word does not appear in the text file it is considered to be invalid. 
+
+I used manual testing throughout the whole development phase of the project and created a smaller text file with five letter words for testing and validation purposes and for screenshots for this file.
+
+
+Testing to ensure user guess is five letters in length:
+
+* If guess is less than five letters: 
+
+![Less than five](assets/images/test-less-than.png)
+
+* If guess is greater than five letters:
+
+![Greater than five](assets/images/test-greater-than.png)
+
+* If guess is invalid and contains illegal characters.
+
+![Invalid word](assets/images/test-invalid-word.png)
 
 [Back to top](#contents)
 
+# Validation
+
+Code Institution's Python Linter was used to test Python code for semantic and stylistic problems. 
+
+All issues were fixed within linter application. Once I had fixed all errors I copied over the previous version of the file (after saving first).
+
+![Pylint Run](assets/images/linter-run.py.png)
+
+The same test was also performed on the play.py file which is used by the application to check the states of the letter guesses for the game.
+
+![Pylint Run](assets/images/linter-play.py.png)
+
 # Deployment to Heroku
+
+## Before deployment
+
+<b>Requirements.txt</b> is used in Heroku to look for libraries/packages installed (ie Coloroma) that are required to run the application.
+
+To get a list of all packages installed, the following command is run from the terminal (in Windows). <b>></b> redirects the output of the command to the file (requirements.txt).
+
+<i>py -m pip freeze > requirements.txt</i>
+
 
 ## Project Deployment
 
@@ -241,69 +274,44 @@ The application was deployed to Heroku. In order to deploy, the following steps 
 
 1. If you have an account, login to Heroku. Otherwise create a new account.
 2. Once signed in, click the button "New" in the top right corner, below the header and choose "Create new app".
-   <details><summary><b>Create new app</b></summary>
+   
 
-   ![Create new app](/readme-images/create_new_app.png)
-   </details><br />
-
+  ![Create new app](assets/images/heroku-new-app.png)
+   
 3. Choose a unique name for the application and select your region. When done, click "Create app".
-   <details><summary><b>Create app</b></summary>
-
-   ![Create app](/readme-images/create_app.png)
-   </details><br />
-
+   
+![Create app](assets/images/heroku-create-new-app.png)
 
 4. This brings you to the "Deploy" tab. From here, click the "Settings" tab and scroll down to the "Config Vars" section and click on "Reveal Config Vars". In the KEY input field, enter "PORT" and in the VALUE input field, enter "8000". After that, click the "Add" button on the right.
 
-   <details><summary><b>Config Vars</b></summary>
 
-   ![Config Vars](/readme-images/config_vars.png)
-   </details><br />
+   ![Heroku Settings](assets/images/heroku-settings.png)
+
+  <b>Please note:</b> If you have used Google sheets your credential details must also be saved into the settings section. Using 'CREDS' in the key field and copying and pasting the details from the creds.json file used for the application into the 'value' input field opposite.)
+
+  ![Heroku Settings](assets/images/heroku-creds.png)
+
 
 5. Afterwards, scroll down to the "Buildpacks" section of the settings page and click the button "Add buildpack".
 
-   <details><summary><b>Buildpacks</b></summary>
-
-   ![Buildpacks](/readme-images/buildpacks.png)
-   </details><br />
-
-6. First add "Python" package and then "node.js". 
    
-   <details><summary><b>Choose Buildpacks</b></summary>
+   ![Heroku Settings](assets/images/heroku-add-buildpacks.png)
 
-   ![Choose Buildpacks](/readme-images/packages_order.png)
-   </details><br />
-
-7. If you exchanged the order of the packages, just drag the Python package above.
+6. First add "Python" package and then "node.js". Please ensure Python is listed first if not drag it upwards using your mouse above "node.js"
    
-   <details><summary><b>Buildpacks' Order</b></summary>
-   
-   ![Buildpacks's Order](/readme-images/buildpacks_correct_order.png)
-   </details><br />
-
+  
 8. Scroll back to the top of the page and choose the "Deploy" tab. Then choose "GitHub" as Deployment method.
    
-   <details><summary><b>Deployment method</b></summary>
-   
-   ![Deployment method](/readme-images/deploy.png)
-   </details><br />
 
-9. Go to "Connect to GiHub" section, search for the repository and then click "Connect".
+
+9. Go to "Connect to GitHub" section, search for your repository and then click "Connect".
    
-   <details><summary><b>Connect to GitHub</b></summary>
-   
-   ![Connect to GitHub](/readme-images/connect_repository.png)
-   </details><br />
 
 10. In the "Automatic Deploys" section, choose your preferred method for deployment. At first, I used the manual deployment option, and later I changed it to automatic deploys. Afterwards, click "Deploy Branch".
-   
-    <details><summary><b>Automatic Deploys</b></summary>
-   
-    ![Automatic Deploys](/readme-images/automatic_deploys.png)
-    </details><br />
+ 
 
-The link to the the live site can be found here - https://towers-of-hanoi-game.herokuapp.com/.
-The link to the GitHub repository can be found here - https://github.com/lucia2007/towers-of-hanoi.
+The link to the the live application can be found here - 
+The link to the GitHub repository can be found here - 
 
 
 [Back to top](#contents)
@@ -312,10 +320,9 @@ The link to the GitHub repository can be found here - https://github.com/lucia20
 
 A copy of the GitHub Repository can be made by forking the GitHub account. This copy can be viewed and changed without affecting the original repository. Take the following steps to fork the repository:
 
-1. Log in to **GitHub** and locate the [repository](https://github.com/lucia2007/towers-of-hanoi).
+1. Log in to **GitHub** and locate the repository you wish to fork.
 2. On the top right hand side of the page is a button called **'Fork'**. Click on the button to create a copy of the original repository in your GitHub Account.
 
-[GitHub forking process image](/readme-images/forking_process.png)
 
 [Back to top](#contents)
 
@@ -323,45 +330,29 @@ A copy of the GitHub Repository can be made by forking the GitHub account. This 
 
 Take the following steps to create a clone of a project:
 
-1. Click on the **Code** button in the left top corner.
-2. Next to the green **GitPod** button, click on **Code** drop-down menu.
+1. Click on the **Code** button in the right top corner.
 3. In the **HTTPS** section, click on the clipboard icon to copy the displayed URL.
 4. In your IDE of choice, open **Git Bash**.
 5. Change the current working directory to the location where you want the cloned directory to be made.
 6. Type **git clone**, and then paste the URL copied from GitHub.
 7. Press **enter** and the local clone will be created.
 
-[Github cloning process image](/readme-images/cloning_process.png)
-
 [Back to top](#contents)
-
 
 # Credits
 
 ## Content
-- The overall inspiration came from the well-known game called <a href="https://www.amazon.co.uk/Tower-Hanoi-9-disc-version/dp/B0006A3JZC/ref=asc_df_B0006A3JZC/?tag=googshopuk-21&linkCode=df0&hvadid=310869104636&hvpos=&hvnetw=g&hvrand=15866353930159951919&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1007850&hvtargid=pla-439214070867&psc=1" target="_blank" rel="noopener">Tower of Hanoi</a> which my children recently discovered and fell in love with.
-- [Draw.io](https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio) was used to create the dependency diagram.
-- The framework for the Readme file was originally inspired by [Wawas Wood](https://github.com/EwanColquhoun/wawaswoods/blob/master/README.md), [Scoops](https://github.com/amylour/scoops_pp1/blob/main/README.md#testing) and [CI_Project-Protfolio-3](https://github.com/MikeR94/CI-Project-Portfolio-3#python-logic)
+The inspiration for this application is thanks to this version of the [game](https://www.wordle.ie/).
 
-## Media
-- I was inspired by <a href="https://www.geeksforgeeks.org/c-program-for-tower-of-hanoi/" target="_blank" rel="noopener">Towers of Hanoi illustrative picture</a>. 
-- When looking for inspiration as how to approach the visualization of the game in CLI, I came accross this version: <a href="https://unix.stackexchange.com/questions/382585/animation-inside-terminal-with-escape-codes" target="_blank" rel="noopener">Towers of Hanoi in CLI</a>.
+The framework for the Readme file is thanks to this [Readme](https://github.com/lucia2007/towers-of-hanoi/blob/main/README.md).
+
+The rectangular box used to store the user's guesses are thanks to this [website](https://en.wikipedia.org/wiki/Box-drawing_character) for box drawing characters.
 
 ## Acknowledgements
-- Extra help and guidance was received from my mentor Precious Ijege, from my husband Sam and fellow colleagues from the Code Institute.
-- My husband Sam encouraged me to use OOP and guided me through it. He also encouraged me to use annotation for functions which helped me during the debugging process. Lastly, he showed my how to disable pylint statements.
-- Other sources of inspiration and help:
-  - [Clear Screen in Python](https://www.geeksforgeeks.org/clear-screen-python/)
-  - [Convert range into list](https://pythonexamples.org/python-convert-range-into-a-list/)
-  - [Slow print](https://stackoverflow.com/questions/15375368/slow-word-by-word-terminal-printing-in-python)
-  - [Sleep function](https://www.freecodecamp.org/news/the-python-sleep-function-how-to-make-python-wait-a-few-seconds-before-continuing-with-example-commands/#:~:text=You%20can%20use%20Python's%20sleep,pauses%20between%20words%20or%20graphics.)
-  - [While Do Loop in Python](https://www.freecodecamp.org/news/python-do-while-loop-example/)
-  - [ASCII ART Generator](https://patorjk.com/software/taag/#p=display&h=2&f=Big&t=Towers%20of%20Hanoi)
-  - [Use and installation of COLORAMA](https://dev.to/muhimen123/colored-text-in-terminal-using-python-1nmd#:~:text=In%20colorama%2C%20the%20font%20color,start%20by%20importing%20the%20module.&text=Then%2C%20in%20the%20print%20statement,Just%20like%20this.)
-  - [Print multiple lines of text in Python](https://stackoverflow.com/questions/34980251/how-to-print-multiple-lines-of-text-with-python)
-  - [Create raw string in Python](https://www.digitalocean.com/community/tutorials/python-raw-string)
-
-Thank you all for your support and encouragement. I couldn't have done it without you.
+- Thanks to this [Youtube tutorial](https://www.youtube.com/watch?v=SyWeex-S6d0) which greatly helped me as a newbie to Python programming.
+- Thanks to help and guidance from my mentor Precious Ijege and for sending on the readme file which I used as a template.
+- Thanks to this [Github repository](https://github.com/charlesreid1/five-letter-words/blob/master/sgb-words.txt) which was used as a source for the 5-letter words for the game.
+- Finally, thanks to all at the Code Institute, particularly our course facilitator Kamil Wojciechowski. 
 
 [Back to top](#contents)
 
