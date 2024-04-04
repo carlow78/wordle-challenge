@@ -267,6 +267,8 @@ The same test was also performed on the play.py file which is used by the applic
 
 As mentioned earlier the wordle_five.txt text file is not perfect but it performs its main purpose and acts as a good validation point despite its limitation such as possibly missing some five letter words.
 
+The issue of dealing with duplicate letter is a common issue when coding Wordle application. This occurs when two identical letters are in a guess but only one occurence of the letter is in the word. This issue was resolve in this commit bc24dde.
+
 # Deployment to Heroku
 
 ## Before deployment
