@@ -1,10 +1,10 @@
 # Wordle
 
-Wordle is a Python command line interface (CLI) application which allows the user to play the well-known game of <[a href="https://mashable.com/article/wordle-word-game-what-is-it-explained" target="_blank" rel="noopener">Wordle</a>. ](https://www.thesun.ie/tech/8147348/wordle-who-invented/)
+Wordle is a Python command line interface (CLI) application which allows the user to play the well-known game of <a href="https://mashable.com/article/wordle-word-game-what-is-it-explained" target="_blank" rel="noopener">Wordle</a>.
 
-The game was invented by Josh Wardle (the game is a pun on his surname) during the Coronavirus lockdown to amuse himself and his wife. It was launched in October 2021 and it is now played by millions worldwide. The rights of the game were sold in January 2022 to the New York Times. <[a href="https://www.thesun.ie/tech/8147348/wordle-who-invented/" target="_blank" rel="noopener">Wordle</a>. 
+The game was invented by Josh Wardle (Wordle is a pun on his surname) during the Coronavirus lockdown to amuse himself and his wife. It was launched in October 2021 and it is now played by millions worldwide. The rights of the game were sold in January 2022 to the New York Times. <a href="https://www.thesun.ie/tech/8147348/wordle-who-invented/" target="_blank" rel="noopener">Source</a>. 
 
-The game can be played both by adults and children. To improve their vocabulary and grasp of the English language.
+The game can be enjoyed both by adults and children. To improve their vocabulary and grasp of the English language.
 
 You can play the game here:
 [Wordle](https://wordle-challenge-8b5fbd02f69c.herokuapp.com/)
@@ -145,60 +145,73 @@ As regards the color scheme, as I explained in the Design Choices section I chos
 
 ### Mechanism of the Game
 
-The idea of the game is simple to try and guess the five letter word randomly selected by the application at the start of the game. The text file <u>wordle_five.txt</u> is used to validate and to ensure only five-letter words are used.
+The idea of the game is simple. To try and guess the five letter word randomly selected by the application at the start of the game. The text file <i>wordle_five.txt</i> is used to validate and to ensure only five-letter words are used.
 
 #### ad 1) ATTEMPTS
 
 The game is limited to 6 attempts each time the user makes a guess they are informed how many attempts they have remaining.
 
-![Wordle Green](assets/images/wordle-attempts.png)
+![Wordle Attempts](assets/images/wordle-attempts.png)
 
 
 #### ad 2) GREEN LETTER
 
 After each guess the user receives feedback to tell them if any of the letters contained in their guess are in the randomly selected word. 
-To assist them, if any of the letters that are in the same spot as the randomly selected word. This letter (and any other letter) will highlight in GREEN and display within the rectangular game box.
+To assist them, if any of the letters that are in the same spot as the randomly selected word. This letter (and any other letter) will highlight in <span style="color:green">Green</span> and display within the rectangular game box.
+
+![Wordle Green](assets/images/wordle-green.png)
 
 #### ad 3) BLUE LETTER
 
-If any of the letters that are in the randomly selected word but not in their current position they are highlighted in BLUE.
+If any of the letters that are in the randomly selected word but not in their current position they are highlighted in <span style="color:blue">Blue</span>.
+
+![Wordle Blue](assets/images/wordle-blue.png)
 
 #### ad 4) RED LETTER
 
-Finally, if a letter is not in the randomly selected word they are highlighted in RED. 
+Finally, if a letter is not in the randomly selected word they are highlighted in <span style="color:red">Red</span>. 
+
+
+![Wordle Red](assets/images/wordle-red.png)
 
 [Back to top](#contents)
 
 ### Winning message
 
-When the user manages to guess
+When the user manages to guess the application randomly selected.
 
-![The Winning message](/readme-images/congratulations.png)
+The user is congratulated and informed of the number of attempts they had remaining.
 
-Within the winning message, the user is informed of the number of moves they used. 
+![Wordle Win](assets/images/wordle-win.png)
 
 At the end, the user gets a choice to play again or to quit the game. 
 
-When the user chooses the Play again option, the game is reset to the intial settings and enter their first guess.
+When the user chooses the Play again option, the game is reset to the intial settings and allows them to enter their first guess.
 
-When the user chooses to quit, a goodbye message is displayed.
+If the user chooses to quit, a goodbye message is displayed.
 
-![Good-bye message](readme-images/good_bye.png)
+![Wordle Goodbye](assets/images/wordle-goodbye.png)
 
 [Back to top](#contents)
+
 ### Future Features
 
-- In the future, I could also implement the user name usage and score tracking functionality.
+- In the future, I could also implement a user name input at the start of the game and a scoreboard to track user scores using Google Sheets.
+
+- ASCII word art for the game title and for the feedback.
+
+- Further checking of user guess validation. The text file works well has a source of validation but I am aware its not perfect it is missing some valid five letter words and may contain words that are not actually valid. But with 5757 words I hope it will provide the user hours of learning and fun.
 
 [Back to top](#contents)
 
 # Technologies Used
 - [Github](https://github.com/) - Used for hosting the repository.
 - [Heroku](https://heroku.com/) - Used for deploying the application.
-- [Xvode](https://www.gitpod.io/#get-started) - Used for developing the application.
+- [Visual Studio Code](https://code.visualstudio.com/) - Used for developing the application.
+- [Github Desktop](https://desktop.github.com/) - Used to track and commit changes to github.
+- [Git for Windows](https://gitforwindows.org/) - To push changes to github.
 - [Python](https://www.python.org/) - Used for adding functionality to the application.
 - [CI Python Linter](https://pep8ci.herokuapp.com/#) - Used for validation of python code.
-- [Draw.io](https://marketplace.visualstudio.com/items?itemName=hediet.vscode-drawio) - Used for creating the dependency diagram.
 
 [Back to top](#contents)
 
