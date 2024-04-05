@@ -255,7 +255,18 @@ The application has been tested in Lighthouse. Here are the results:
 
 Code Institution's Python Linter was used to test Python code for semantic and stylistic problems. 
 
-All issues were fixed within linter application. The most common error I had was trailing whitespaces and having too much content on a single line. Once I had fixed all errors I copied over the previous version of the file (after saving first).
+All issues were fixed within linter application. The only two issues I needed to do a quick google search to resolve were -
+
+1. Error message 1 (Indentation is not a multiple of four (E111))
+
+ Resolved using this source - https://www.flake8rules.com/rules/E111.html
+
+2. Error message 2 (Test for membership should be 'not in' (E713))
+
+- resolved using this source - https://www.flake8rules.com/rules/E713.html
+
+
+Apart from these two errors, the most common error I had was trailing whitespaces and having too much content on a single line. To resolve this I trimmed all content to be within the grey line in the application. And it does improve the code readibility. I also had to tab to keep print content inline. Once I had fixed all errors I copied over the previous version of the file (after saving first).
 
 ![Pylint Run](assets/images/linter-run.py.png)
 
@@ -267,7 +278,15 @@ The same test was also performed on the play.py file which is used by the applic
 
 As mentioned earlier the wordle_five.txt text file is not perfect but it performs its main purpose and acts as a good validation point despite its limitation such as possibly missing some five letter words.
 
-The issue of dealing with duplicate letter is a common issue when coding Wordle application. This occurs when two identical letters are in a guess but only one occurence of the letter is in the word. This issue was resolve in this commit bc24dde.
+Previously, I was using another [source](https://github.com/first20hours/google-10000-english/blob/master/google-10000-english-usa-no-swears-medium.txt) for the five-letter words which contained 5-8 letter words which I reduced down to five using a [python script](assets/cap_to_five.py) to read, find and then write just the five letter words to another text file. This output file contained just over 1,300 five letter words. So the file used is an improvement on it.
+
+The issue of dealing with duplicate letter is a common issue when coding a Wordle application. This occurs when two identical letters are in a guess but only one occurence of the letter is actually in the word. This issue was resolve in this commit bc24dde. 
+
+To resolve it two passes are used the first is used to initialize. We initialize an array with all guess letters set to grey, indicating they are not in the word. We create a separate list that is a copy of the secret, with each element representing a letter in the string, such as ["A", "P", "P", "L", "E"].
+
+During the first pass, we identify any letters in the correct position in the guess. If found, we mark that letter as 'green' and update the secret list to exclude that letter from future comparisons. For instance, if the guess is "HELLO", the remaining secret might look like this: ["A", "P", "P", "*", "E"].
+
+Next, we perform another loop to identify the guessed letters that are present in the word but not in the correct position. This is achieved using a nested loop for comparison.
 
 # Deployment to Heroku
 
