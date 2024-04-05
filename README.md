@@ -255,15 +255,15 @@ The application has been tested in Lighthouse. Here are the results:
 
 Code Institution's Python Linter was used to test Python code for semantic and stylistic problems. 
 
-All issues were fixed within linter application. The only two issues I needed to do a quick google search to resolve were -
+All issues were fixed within linter application. The only two issues I needed to do a quick google search to resolve were:
 
-1. Error message 1 (Indentation is not a multiple of four (E111))
+1. <u>Error message 1 (Indentation is not a multiple of four (E111))</u>
 
- Resolved using this source - https://www.flake8rules.com/rules/E111.html
+  * Resolved using this source - https://www.flake8rules.com/rules/E111.html
 
-2. Error message 2 (Test for membership should be 'not in' (E713))
+2. <u>Error message 2 (Test for membership should be 'not in' (E713))</u>
 
-- resolved using this source - https://www.flake8rules.com/rules/E713.html
+* Resolved using this source - https://www.flake8rules.com/rules/E713.html
 
 
 Apart from these two errors, the most common error I had was trailing whitespaces and having too much content on a single line. To resolve this I trimmed all content to be within the grey line in the application. And it does improve the code readibility. I also had to tab to keep print content inline. Once I had fixed all errors I copied over the previous version of the file (after saving first).
